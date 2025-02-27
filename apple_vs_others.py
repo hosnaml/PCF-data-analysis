@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 df = pd.read_csv('boavizta-data-us.csv')
 
@@ -30,4 +31,22 @@ print(f"Average emissions for Lenovo laptops: {lenovo_laptop_avg_emissions:.2f} 
 print(f"Average emissions for Microsoft laptops: {microsoft_laptop_avg_emissions:.2f} kg CO₂")
 
 
+manufacturers = ['Apple', 'HP', 'Dell', 'Asus', 'Google', 'Lenovo', 'Microsoft']
+avg_emissions = [
+    apple_laptop_avg_emissions,
+    hp_laptop_avg_emissions,
+    dell_laptop_avg_emissions,
+    asus_laptop_avg_emissions,
+    google_laptop_avg_emissions,
+    lenovo_laptop_avg_emissions,
+    microsoft_laptop_avg_emissions
+]
 
+plt.figure(figsize=(10, 6))
+plt.bar(manufacturers, avg_emissions, color='skyblue')
+plt.title('Average GWP Total for Laptops by Manufacturer')
+plt.xlabel('Manufacturer')
+plt.ylabel('Average GWP Total (kg CO₂)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
